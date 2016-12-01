@@ -1,0 +1,24 @@
+PMS
+Personal Management System
+
+项目管理工具
+Maven
+Git	https://github.com/i2019/pms.git
+
+JDK
+1.7
+
+框架
+myBatis
+Spring
+SpringMVC
+
+数据库
+MySQL
+
+前端框架
+AngularJS
+
+需求
+1.
+增加记录日常消费的功能
