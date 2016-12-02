@@ -66,11 +66,12 @@
 	 
 	    registerAlias("ResultSet", ResultSet.class);
 	    -->
-
+		<typeAlias type="tao.pms.model.account.Consumption" alias="consumption"/>
+		
 	</typeAliases>
 	
     <mappers>  
-        
+        <mapper resource="mappers/ConsumptionMapper.xml"/>  
     </mappers> 
      
 </configuration>

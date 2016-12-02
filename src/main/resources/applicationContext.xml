@@ -22,6 +22,12 @@
 
 	<!-- 数据源连接信息配置文件 -->
 	<context:property-placeholder location="classpath*:db.properties" />
+	
+	<!-- 
+	component-scan标签默认情况下自动扫描指定路径下的包（含所有子包），
+	将带有@Component、@Repository、@Service、@Controller标签的类自动注册到spring容器。
+	 -->
+	<context:component-scan base-package="tao.pms"/> 
 
 	<!-- 配置 C3P0 数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -41,7 +47,7 @@
 	
 	<!-- mybatis-spring 自动扫描dao -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="ty.pms.dao.*.*" />
+		<property name="basePackage" value="tao.pms.dao.*" />
 	</bean>
 
 	<bean id="transactionManager"
@@ -49,27 +55,4 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<!-- service -->
-	<bean id="userService" class="ty.pms.service.sys.user.impl.UserServiceImpl">
-		<property name="mapper" ref="userMapper"></property>
-	</bean>
-	<bean id="expenditureService" class="ty.pms.service.account.expenditure.impl.ExpenditureServiceImpl">
-		<property name="mapper" ref="expenditureMapper"></property>
-	</bean>
-	<bean id="unitService" class="ty.pms.service.common.unit.impl.UnitServiceImpl">
-		<property name="mapper" ref="unitMapper"></property>
-	</bean>
-	<bean id="day2DayService" class="ty.pms.service.time.day2day.impl.Day2DayServiceImpl">
-		<property name="mapper" ref="day2DayMapper"></property>
-	</bean>
-	<bean id="causeService" class="ty.pms.service.common.cause.impl.CauseServiceImpl">
-		<property name="mapper" ref="causeMapper"></property>
-	</bean>
-	
-	<!-- action -->
-	<!-- 注意: 在 IOC 容器中配置 Struts2 的 Action 时, 需要配置 scope 属性, 其值必须为 prototype -->
-	<bean id="loginAction" class="ty.pms.action.login.LoginAction" scope="prototype">
-		<property name="userService" ref="userService"></property>
-	</bean>
-
 </beans>
