@@ -6,6 +6,6 @@
 <title>Main</title>
 </head>
 <body>
-main
+body
 </body>
 </html>

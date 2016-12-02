@@ -57,15 +57,32 @@ CREATE TABLE `consumption` (
 
 
 
+模板布局
+1.Tiles
+2.Sitemesh
+
+Tiles是一个JSP布局框架。
+Tiles框架为创建Web页面提供了一种模板机制，它能将网页的布局和内容分离。它用模板定义网页布局，每个页面模板都是一个简单的 JSP 页，它定义了一些由占位符组成的外形，以放置内容。执行时，Tiles 将会用相应的内容来替换占位符，因此，创建整个页面即形成布局。Tiles框架是建立在JSP的include指令基础上的，但它提供了比JSP的include指令更强大的功能。Tiles框架具有如下特性：
+1.创建可重用的模板
+2.动态构建和装载页面
+3.定义可重用的Tiles组件
+4.支持国际化。
 
 
+http://tiles.apache.org/
+
+A free open-sourced templating framework for modern Java applications.
+Based upon the Composite pattern it is built to simplify the development of user interfaces.
+For complex web sites it remains the easiest and most elegant way to work alongside any MVC technology.
 
 
+（1） Apache Tiles 顾名思义，Tile是瓷砖的意思，也就是说一个网页是由多个Tile组成的。
+用户通过访问一个页面的Apache Tiles定义名，就可以访问一个由定义文件中包含的页面组成的最终的JSP。
+（2） Sitemesh 的原理和 Apache Tiles截然不同，如果说Apache Tiles Sitemesh通过一个过滤器来实现，当每个页面返回时，给它穿上衣服，打扮打扮，再返回。
+而Apache Tiles 则是通过一个组装器，在页面被请求后开始工作，组装完毕，返回，网站文件中也许根本没有这个请求的资源，而是临时按照定义拼凑起来的。
 
+两者都是轻量级框架，不过Sitemesh 更胜一筹，原理简单，配置更加简单，而且非常容易和其他MVC框架结合。
 
+Apache Tiles 基于定义，任何页面都可以被重组，使用起来组合千变万化。 而Sitemesh 也可以实现页面重用，通过渲染的方式。不过灵活性对比Apache Tiles还是稍微差点。
 
-
-
-
-
-
+ 
