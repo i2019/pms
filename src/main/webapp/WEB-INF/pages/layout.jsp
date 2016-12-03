@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+
+<%@ include file="base.jsp"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,9 +9,13 @@
 <title>List</title>
 </head>
 <body>
-   <tiles:insertAttribute name="head" />
-   <tiles:insertAttribute name="left" />
-   <tiles:insertAttribute name="main" />
-   <tiles:insertAttribute name="foot" />
+  <div id="container">
+	  <div id="header"> <tiles:insertAttribute name="head" /></div>
+	  <div id="mainContent">
+	    <div id="sidebar"><tiles:insertAttribute name="left" /></div>
+	    <div id="content"><tiles:insertAttribute name="main" /></div>
+	  </div>
+	  <div id="footer"> <tiles:insertAttribute name="foot" /></div>
+  </div>
 </body>
 </html>

@@ -6,9 +6,15 @@
     <distributable/>
 	
 	 <welcome-file-list>
-        <welcome-file>main.jsp</welcome-file>
+        <welcome-file>layout.jsp</welcome-file>
     </welcome-file-list>
   
+  	<!-- static_resources开头的路径，默认链接静态资源文件 -->
+	<servlet-mapping>  
+		<servlet-name>default</servlet-name>  
+		<url-pattern>/static_resources</url-pattern>  
+	</servlet-mapping>  
+	
     <!-- 扫描配置文件 -->
      <context-param>
     	<param-name>contextConfigLocation</param-name>

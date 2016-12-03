@@ -1,0 +1,18 @@
+PMS
+Personal Management System
+
+Maven
+Git	https://github.com/i2019/pms.git
+
+JDK
+1.7
+
+myBatis
+Spring
+SpringMVC
+
+
+MySQL
+
+
+AngularJS
