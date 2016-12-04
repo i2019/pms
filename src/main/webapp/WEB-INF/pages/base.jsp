@@ -8,10 +8,7 @@
 
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-
-
-<!-- 国际化 -->
-
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 
 

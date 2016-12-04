@@ -42,5 +42,27 @@
     	<property name="prefix" value="/WEB-INF/pages/"></property>
     	<property name="suffix" value=".jsp"></property>
    </bean>
-	 
+	
+	<!-- 国际化 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		 <property name="defaultEncoding" value="UTF-8" />
+		<!-- 国际化信息所在的文件名 -->                     
+		 <property name="basenames">
+            <list>
+                <value>messages</value>
+            </list>
+        </property>  
+		<!-- 如果在国际化资源文件中找不到对应代码的信息，就用这个代码作为名称  -->               
+		<property name="useCodeAsDefaultMessage" value="true" />           
+	</bean>  
+	
+    
+	<!-- 存储区域设置信息 -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+    
+	<mvc:interceptors>  
+	    <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 --> 
+	    <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />  
+	</mvc:interceptors>  
+	
 </beans>
