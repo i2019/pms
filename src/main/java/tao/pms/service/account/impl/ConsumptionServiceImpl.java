@@ -13,23 +13,25 @@ import tao.pms.model.account.ConsumptionCriteria;
 import tao.pms.model.account.ConsumptionResult;
 import tao.pms.model.constant.ReturnConstant;
 import tao.pms.service.account.ConsumptionService;
-import tao.pms.service.base.BaseServiceImpl;
+import tao.pms.service.base.BaseManagerImpl;
 import tao.pms.util.CommonUtil;
 
-@Service("consumptionService")
-public class ConsumptionServiceImpl extends BaseServiceImpl implements ConsumptionService {
+@Service
+public class ConsumptionServiceImpl extends BaseManagerImpl implements ConsumptionService {
 
 	@Resource
 	private ConsumptionDao consumptionDao;
 	
 	@Override
 	public Integer add(Consumption record) {
+
 		if(!StringUtils.isEmpty(record)){
 			if(StringUtils.isEmpty(record.getId())){
 				record.setId(CommonUtil.generateUUID());
 			}
 			return consumptionDao.add(record);
 		}
+
 		return ReturnConstant.EMPTY;
 	}
 

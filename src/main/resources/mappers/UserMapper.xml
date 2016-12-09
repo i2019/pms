@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="tao.pms.dao.user.UserDao">
+	
+	<!-- 列举所有字段 -->
+	<sql id="allColumns">
+		name,password,
+		id,
+		createTime,modifyTime,
+  		createdBy,updatedBy,
+  		remark,delFlag
+	</sql>
+	<!-- 分页  -->
+	<sql id="limitPage">
+   		 <if test="skipResults!=null">
+			limit #{skipResults},#{maxResults}
+   		 </if>
+	</sql>
+	<!-- 统计查询结果数 -->
+	<sql id="selectCount">
+		select count(*) from
+	</sql>
+	<!-- 根据创建时间降序排序 -->
+	<sql id="createTimeDesc">
+		order by u.createTime desc
+	</sql>
+	<!-- 根据用户名升序排序 -->
+	<sql id="nameAsc">
+		order by u.name asc
+	</sql>
+	
+	<insert id="add" parameterType="user">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name != null">
+				name,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="id != null">
+				id,
+			</if>
+			<if test="modifyTime != null">
+				modifyTime,
+			</if>
+			<if test="createTime != null">
+				createTime,
+			</if>
+			<if test="createdBy != null">
+				createdBy,
+			</if>
+			<if test="updatedBy != null">
+				updatedBy,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="delFlag != null">
+				delFlag
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="updatedBy != null">
+				#{updatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR}, 
+			</if>
+			<if test="delFlag != null">
+				#{delFlag,jdbcType=TINYINT}
+			</if>
+		</trim>
+	</insert>
+	
+	
+	<update id="update" parameterType="user">
+		update user
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				modifyTime=#{modifyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createTime != null">
+				createTime=#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createdBy != null">
+				createdBy=#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="updatedBy != null">
+				updatedBy=#{updatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark=#{remark,jdbcType=VARCHAR}, 
+			</if>
+			<if test="delFlag != null">
+				delFlag=#{delFlag,jdbcType=TINYINT}
+			</if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	<delete id="remove" parameterType="string">
+		delete from user
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+	
+	<select id="getById" resultType="user" parameterType="string">
+		select 
+		<include refid="allColumns" />
+		from user u
+		where id = #{id,jdbcType=VARCHAR} and delFlag=0
+		<include refid="nameAsc" />
+	</select>
+	
+	<select id="getAllCount" resultType="int" >
+		<include refid="selectCount" /> user
+		where delFlag=0
+	</select>
+	
+	<!-- resultType返回的是集合中的元素类型，而不是集合本身的类型。 -->
+	<select id="getAll" resultType="user">
+		select
+		<include refid="allColumns" />
+		from user u
+		where delFlag=0
+		<include refid="nameAsc" />
+	</select>
+	
+	 <select id="getByCriteriaCount" resultType="int" parameterType="userCriteria">
+    	<include refid="selectCount" /> user u
+    	<where>
+    		delFlag=0
+    		<if test="name != null">
+				and name = #{name}
+			</if>
+			<if test="nameList != null">
+   			 	and name in
+		      	<foreach collection="nameList" item="name" index="index" open="(" close=")" separator=",">
+		            #{name}
+		        </foreach>
+  			</if>
+  			
+			<if test="password != null">
+				and password = #{password}
+			</if>
+
+			<if test="modifyTime != null">
+				and modifyTime=#{modifyTime}
+			</if>
+			
+			<if test="createTime != null">
+				and createTime=#{createTime}
+			</if>
+			<if test="createTimeBegin != null">
+				<![CDATA[
+				and createTime>=#{createTimeBegin}
+				]]>     
+			</if>
+			<if test="createTimeEnd != null">
+				<![CDATA[
+				and createTime<=#{createTimeEnd}
+				]]>     
+			</if>
+			
+			<if test="createdBy != null">
+				and createdBy=#{createdBy}
+			</if>
+			
+			<if test="updatedBy != null">
+				and updatedBy=#{updatedBy}
+			</if>
+			
+			<if test="remark != null">
+				 and remark like CONCAT('%','${remark}','%' ) 
+			</if>
+			
+    	</where>
+    </select>
+    <select id="getByCriteria" resultType="user" parameterType="userCriteria">
+    	select <include refid="allColumns" /> from user u
+    	<where>
+    		delFlag=0
+    		<if test="name != null">
+				and name = #{name}
+			</if>
+			<if test="nameList != null">
+   			 	and name in
+		      	<foreach collection="nameList" item="name" index="index" open="(" close=")" separator=",">
+		            #{name}
+		        </foreach>
+  			</if>
+  			
+			<if test="password != null">
+				and password = #{password}
+			</if>
+
+			<if test="modifyTime != null">
+				and modifyTime=#{modifyTime}
+			</if>
+			
+			<if test="createTime != null">
+				and createTime=#{createTime}
+			</if>
+			<if test="createTimeBegin != null">
+				<![CDATA[
+				and createTime>=#{createTimeBegin}
+				]]>     
+			</if>
+			<if test="createTimeEnd != null">
+				<![CDATA[
+				and createTime<=#{createTimeEnd}
+				]]>     
+			</if>
+			
+			<if test="createdBy != null">
+				and createdBy=#{createdBy}
+			</if>
+			
+			<if test="updatedBy != null">
+				and updatedBy=#{updatedBy}
+			</if>
+			
+			<if test="remark != null">
+				 and remark like CONCAT('%','${remark}','%' ) 
+			</if>
+			
+    	</where>
+    	<include refid="nameAsc" />
+    	<include refid="limitPage" />
+    </select>
+    
+</mapper>
+<!-- 
+SQL:
+
+
+CREATE TABLE `user` (
+
+  `name` VARCHAR(50) NOT NULL COMMENT '操作员名称',
+  `password` VARCHAR(50) DEFAULT NULL COMMENT '操作员密码',
+  
+  `id` VARCHAR(32) NOT NULL COMMENT '操作员id',
+ 
+  `createTime` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `modifyTime` DATETIME DEFAULT NULL COMMENT '修改时间',
+  
+  `createdBy` VARCHAR(32) DEFAULT NULL COMMENT '创建者',
+  `updatedBy` VARCHAR(32) DEFAULT NULL COMMENT '修改者',
+  
+  `remark` VARCHAR(1024) DEFAULT NULL COMMENT '备注',
+  `delFlag` TINYINT(1) DEFAULT NULL COMMENT '删除标志',
+   PRIMARY KEY  (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+ -->

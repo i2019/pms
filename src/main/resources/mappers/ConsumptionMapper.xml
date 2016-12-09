@@ -56,7 +56,7 @@
 				#{time,jdbcType=TIMESTAMP},
 			</if>
 			<if test="modifyTime != null">
-				#{lastModifyTime,jdbcType=TIMESTAMP},
+				#{modifyTime,jdbcType=TIMESTAMP},
 			</if>
 			<if test="createTime != null">
 				#{createTime,jdbcType=TIMESTAMP},

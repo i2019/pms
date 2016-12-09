@@ -68,10 +68,14 @@
 	    -->
 		<typeAlias type="tao.pms.model.account.Consumption" alias="consumption"/>
 		
+		<typeAlias type="tao.pms.model.user.User" alias="user"/>
+		<typeAlias type="tao.pms.model.user.UserCriteria" alias="userCriteria"/>
+		
 	</typeAliases>
 	
     <mappers>  
         <mapper resource="mappers/ConsumptionMapper.xml"/>  
+        <mapper resource="mappers/UserMapper.xml"/>  
     </mappers> 
      
 </configuration>

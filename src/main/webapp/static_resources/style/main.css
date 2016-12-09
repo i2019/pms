@@ -35,3 +35,112 @@ span.title_con{font-family:"微软雅黑";font-style: normal;font-size: 2em;font
 .con_input input.verificationImg{width: 30em;padding: 0.5em 1em;border: 1px solid #bbb;}
 
 .submit-btn{margin: 0em 0 5em 0;}
+
+
+/* displaytag */
+.pannel_display { border-top:#c1cfd9 1px solid;}
+.result_table{ width:100%;}
+.result_table th{ border:#c1cfd9 1px solid; border-top-color:#f6f8fa; background:#d3dde4; font-weight:normal; padding:6px 6px;}
+.result_table td{ border:#c1cfd9 1px solid; text-align:center;padding:6px 6px; background:#fff;}
+.result_table th.sortable{ cursor:pointer;}
+.result_table th.sortable:hover{ background:#c1cfd9;}
+.result_table th.sortable.sorted a,
+.result_table th.sortable.sorted.order1 a,
+.result_table th.sortable.sorted.order2 a{ display:inline-block; background-image:url(../img/sortable_sort_bg.png); background-repeat:no-repeat; padding-right:12px; text-decoration:none; color:#4e5663;}
+.result_table th.sortable.sorted a{ background-position:right 4px;}
+.result_table th.sortable.sorted.order1 a{background-position:right -26px;}
+.result_table th.sortable.sorted.order2 a{background-position:right -56px;}
+.result_table th.weekend{background:#9eb2c0;}
+.result_table td.off_fs,
+.result_table td.off_room{ color:#e10000; font-weight:bold; background:#fff4d2;}
+.result_table td.td_ia{ cursor:pointer;}
+.result_table td.td_ia:hover{ background:#e5f3e5;}
+.result_table td.off_room:hover{background:#ffeebb;}
+.result_table td span.price{font-size:14px; padding-right:20px; background:url(../img/price_arrow.png) no-repeat right 0; display:inline-block; line-height:20px;}
+.result_table td span.price.hover{ background-position:right -50px;}
+.result_table td .p_hover{ position:absolute;left:71px; top:15px; background:#fff; border-top:#4e5663 2px solid; width:120px; font-size:12px; padding:6px; display:none;}
+.result_table td .p_hover p{ line-height:20px; margin:0; padding:0; text-align:left;}
+a.link:link,
+a.link:visited{color:#067ab4;}
+a.link:hover{color:#0066cc;}
+a.link_1:link,
+a.link_1:visited{color:#4e5663; text-decoration:none;}
+a.link_1:hover{color:#0066cc; text-decoration:underline;}
+.mgR12 { margin-right:12px; }
+
+/* 居中显示 */
+.center-in-center{   
+     position: absolute;   
+     top: 50%;   
+     left: 50%;   
+     -webkit-transform: translate(-50%, -50%);   
+     -moz-transform: translate(-50%, -50%);   
+     -ms-transform: translate(-50%, -50%);   
+     -o-transform: translate(-50%, -50%);   
+     transform: translate(-50%, -50%);   
+ }         
+ .center {
+	 width: auto;
+	 display: table;
+	 margin-left: auto;
+	 margin-right: auto;
+}
+.text-center {
+  	text-align: center;
+}
+		
+/*去掉a下划线*/
+a.nodecoration:link{
+text-decoration:none;
+}
+a.nodecoration:visited{
+text-decoration:none;
+}
+a.nodecoration:hover{
+text-decoration:none;
+}
+a.nodecoration:active{
+text-decoration:none;
+}
+
+/*分割线*/
+hr.dashed{ background:url(../img/hr_dashed_bg.png) repeat-x 0 0;  border:none; *border-top:#9eb2c0 1px dotted; margin:12px 0;*margin:6px 0;}
+hr.dashed.notopMargin{ margin-top:0;}
+hr.solided{border-top:#f2f2f2 1px solid; margin:12px 0;*margin:6px 0;}
+hr.solided.notopMargin{ margin-top:6px;}
+
+/*宽度*/
+.w120{width: 120px;}
+.w220{width: 180px;}
+.w500{width: 500px;}
+
+/*高度*/
+.h20{
+	height: 20px;
+	overflow:hidden;
+}
+
+/*左内边距*/
+.pleft10{padding-left:10px; }
+
+/*右外边距*/
+.mleft10{
+	margin-right:10px;
+}
+
+/*超出部分自动加省略号*/
+.remarkLabel{
+	position:relative;
+	width:110px;
+	height:24px;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+.remarkLabel span{
+	position:absolute;
+	top:0;
+	right:0;
+	display:block;
+	float:left;
+}
+.remarkLabel span:after{content:"...";}

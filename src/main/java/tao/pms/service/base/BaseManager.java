@@ -2,7 +2,7 @@ package tao.pms.service.base;
 
 import java.util.List;
 
-public interface BaseService <T,R,C>{
+public interface BaseManager <T,R,C>{
 	
 	Integer add(T record);
 	

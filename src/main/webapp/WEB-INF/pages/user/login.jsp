@@ -13,7 +13,7 @@
 	</div>
 </div>
 
-<form action="login" method="post">
+<form action="user_login" method="post">
 <div class="content">
 	<center>
 		<div class="con">

@@ -1,5 +1,5 @@
 package tao.pms.service.base;
 
-public class BaseServiceImpl {
+public class BaseManagerImpl {
 
 }

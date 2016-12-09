@@ -12,7 +12,7 @@ import tao.pms.model.account.Consumption;
 import tao.pms.service.account.ConsumptionService;
 
 
-public class ConsumptionDaoTest extends BaseTest<ConsumptionDao> {
+public class ConsumptionTest extends BaseTest<ConsumptionDao> {
 
 	@Resource
 	private ConsumptionDao consumptionDao;

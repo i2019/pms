@@ -1,21 +1,44 @@
 package tao.pms.model.base;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
-public class BaseObject {
+public class BaseObject implements Serializable{
 	
-	  private String id;//默认id
+	  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 295190848291054257L;
+
+	private String id;//默认id
 	  
-	  private Date time;//发生时间
-	  private Date createTime;//创建时间
-	  private Date modifyTime;//修改时间
+	private BigDecimal amount;//金额
 	  
-	  private String owner;//所有者
-	  private String createdBy;//创建者
-	  private String updatedBy;//修改者
+	private Date time;//发生时间
+	private Date createTime;//创建时间
+	private Date modifyTime;//修改时间
 	  
-	  private String remark;//备注
-	  private boolean delFlag;//删除标志
+	private String owner;//所有者
+	private String createdBy;//创建者
+	private String updatedBy;//修改者
+	  
+	private String cause;//原因
+	private String remark;//备注
+	private boolean delFlag;//删除标志
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+	public String getCause() {
+		return cause;
+	}
+	public void setCause(String cause) {
+		this.cause = cause;
+	}
 	public String getId() {
 		return id;
 	}

@@ -11,19 +11,32 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 
+<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 
 <!-- 静态资源 -->
 
 <!-- jquery -->
-<script type="text/javascript" src="jquery/jquery-3.0.0.js"></script>
+<script type="text/javascript" src="jquery/jquery-2.2.4.js"></script>
+
+
+
+<!-- bootstrap -->
+<link type="text/css" rel="stylesheet" href="bootstrapcss/bootstrap.min.css" />
+<script type="text/javascript" src="bootstrapjs/bootstrap.min.js"></script>
+
+
 
 <!-- 自定义 -->
 <link type="text/css" rel="stylesheet" href="css/main.css" />
+
 <script type="text/javascript" src="js/main.js"></script> 
 <script type="text/javascript" src="js/i18n.js"></script> 
 
-
- 
+ <script type="text/javascript">
+<!--
+$(function () { $(".popover-hide").popover();});
+//-->
+</script>
 
 
 

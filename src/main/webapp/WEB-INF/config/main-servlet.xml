@@ -12,18 +12,59 @@
     <!-- 
     context:component-scan设置扫描通过注释配置的类
     context:include-filter设置只扫描@Controller，其他的交给spring容器去管理
+    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
      -->
-    <context:component-scan base-package="tao.pms" use-default-filters="false">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    <context:component-scan base-package="tao.pms" use-default-filters="true">	
 	</context:component-scan>
+	
+	
+	<!-- 数据源连接信息配置文件 -->
+	<context:property-placeholder location="classpath*:db.properties" />
+	
+	<!-- 
+	component-scan标签默认情况下自动扫描指定路径下的包（含所有子包），
+	将带有@Component、@Repository、@Service、@Controller标签的类自动注册到spring容器。
+	 -->
+	<context:component-scan base-package="tao.pms"/> 
+
+	<!-- 配置 C3P0 数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+		<property name="initialPoolSize" value="${jdbc.initPoolSize}"></property>
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+	</bean>
+
+	<!-- mybatis sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>  
+	</bean>
+	
+	<!-- mybatis-spring 自动扫描dao -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="tao.pms.dao.*" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
 	
 	<!-- 配置静态资源访问-->
 	<mvc:resources mapping="/js/**" location="/static_resources/script/" />
     <mvc:resources mapping="/img/**" location="/static_resources/image/" />
     <mvc:resources mapping="/css/**" location="/static_resources/style/" />
+    
     <mvc:resources mapping="/jquery/**" location="/static_resources/tool/jquery/" />
-	
-	  <!-- 定义tiles视图解析器 -->
+    
+    <mvc:resources mapping="/bootstrapcss/**" location="/static_resources/tool/bootstrap-3.3.6/css/" />
+	<mvc:resources mapping="/bootstrapjs/**" location="/static_resources/tool/bootstrap-3.3.6/js/" />
+
+   <!-- 定义tiles视图解析器 -->
    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
     <property name="viewClass">
       <value>org.springframework.web.servlet.view.tiles3.TilesView</value>
