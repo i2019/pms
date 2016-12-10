@@ -85,6 +85,7 @@ CREATE TABLE `user` (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --------------------------------------------------
+myBatis SQL Map模板
 <insert id="add" parameterType="user">
 	insert into user
 	<trim prefix="(" suffix=")" suffixOverrides=",">

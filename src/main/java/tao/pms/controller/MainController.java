@@ -63,14 +63,15 @@ public class MainController {
 	            request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,LocaleContextHolder.getLocale());
 
 			ModelAndView mav = new ModelAndView();
+			/*
 			String[] arr=null;
 			if(path!=null){
 				arr=path.split("_");
 			}
 			//如果path为*_*格式，则映射到Tiles的*.*.do
 			if(null!=arr&&arr.length==2)
-				mav.setViewName(arr[1]+"."+arr[0]+".do");
-			else
+				mav.setViewName(arr[1].replace(" ", "")+"."+arr[0].replace(" ", "")+".do");
+			else*/
 				mav.setViewName("default.layout");
 			
 			return mav;
