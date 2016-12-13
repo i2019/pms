@@ -13,9 +13,29 @@
 	  <div id="header"> <tiles:insertAttribute name="head" /></div>
 	  <div id="mainContent">
 	    <div id="sidebar"><tiles:insertAttribute name="left" /></div>
-	    <div id="content"><tiles:insertAttribute name="main" /></div>
+	    <div id="content"><tiles:insertAttribute name="main" />
+	    	<div id="footer"> <tiles:insertAttribute name="foot" /></div>
+	    </div>
 	  </div>
-	  <div id="footer"> <tiles:insertAttribute name="foot" /></div>
   </div>
 </body>
+ <script type="text/javascript">
+<!--
+$("#sidebar-toggle").click(function(){
+	//alert($("#sidebar").css("width")+"--"+$("#content").css("left"));
+	var sidebar=$("#sidebar").css("width")+"";
+	//var content=$("#content").css("left");
+	if(sidebar=="50px"){
+		$("#sidebar").css("width","230px");
+		$("#sidebar").css("height","100%");
+		$("#content").css("left","233px");
+		
+	}else{
+		$("#sidebar").css("width","50px");
+		$("#content").css("left","53px");	
+		$("#sidebar").css("height","100%");
+	}
+});
+//-->
+</script>
 </html>

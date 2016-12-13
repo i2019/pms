@@ -3,19 +3,27 @@
 /*布局界面*/
 body { font-family:Verdana; font-size:14px; margin:0;padding: 0px;}
 #container {margin:0 auto; width:100%;height:100%;}
-#header { height:100px; width:100%; background:#6cf; margin-bottom:3px;}
-#mainContent { height:100%; margin-bottom:3px;}
-#sidebar { margin-right:3px;float:left; width:200px; height:100%; background:#9ff;}
+#header { 
+	height:50px; width:100%; 
+	margin-bottom:0px;
+	z-index:999;
+}
+#mainContent { height:100%; width:100%; margin-bottom:0px;}
+
+#sidebar { 
+	margin-right:3px;float:left; width:230px; height:100%;
+	background-color: #222d32;
+}
+
 #content { 
 	float:left; 
-	position:absolute;left:203px;right:0;top:103px;bottom:0px;
+	position:absolute;left:230px;right:0;top:50px;bottom:0px;
 	height: 100%;
-	background:#cff;
 }
+
 #footer { 
-	height:80px; width:100%; 
-	margin-top:3px;
-	background:#6cf;
+	margin-top:0px;
+	position:fixed;bottom:0px;right: 0px;
 }
 
 /*登录界面*/
@@ -35,7 +43,6 @@ span.title_con{font-family:"微软雅黑";font-style: normal;font-size: 2em;font
 .con_input input.verificationImg{width: 30em;padding: 0.5em 1em;border: 1px solid #bbb;}
 
 .submit-btn{margin: 0em 0 5em 0;}
-
 
 /* displaytag */
 .pannel_display { border-top:#c1cfd9 1px solid;}
@@ -144,3 +151,6 @@ hr.solided.notopMargin{ margin-top:6px;}
 	float:left;
 }
 .remarkLabel span:after{content:"...";}
+
+
+
