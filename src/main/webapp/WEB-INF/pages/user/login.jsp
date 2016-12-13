@@ -40,7 +40,8 @@
 	</center>
 </div>
 </form>
-			
+
+<div id="footer"> <tiles:insertAttribute name="foot" /></div>			
 				
 </body>
 <script type="text/javascript">

@@ -7,6 +7,7 @@
 <tiles-definitions> 
 
   <definition name="default.login" template="/WEB-INF/pages/user/login.jsp">
+  	<put-attribute name="foot" value="/WEB-INF/pages/foot.jsp" />
   </definition>
   
   <definition name="default.layout" template="/WEB-INF/pages/layout.jsp">
