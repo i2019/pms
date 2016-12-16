@@ -29,21 +29,21 @@
         
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-        	
+        
+        	<!-- 测试练习 -->
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-line-chart"></i><span>报表</span>
+                    <i class="fa fa-venus-mars"></i><span>练习测试</span>
                     <span class="pull-right-container">
       					<i class="fa fa-angle-left pull-right"></i>
    					</span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-area-chart"></i> 报表1</a></li>
-                    <li><a href="#"><i class="fa  fa-dashboard"></i> 报表2</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> 报表3</a></li>
+                    <li><a href="user_a"><i class="fa fa-child"></i>用户</a></li>
                 </ul>
             </li>
-
+            
+            
         </ul>
     </section>
     <!-- /.sidebar -->

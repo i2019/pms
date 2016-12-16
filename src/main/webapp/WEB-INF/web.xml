@@ -1,14 +1,41 @@
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-
-    <display-name>pms</display-name>
+	
+	<display-name>pms</display-name>
     <distributable/>
 	
 	 <welcome-file-list>
-        <welcome-file>layout.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
   
+	<!-- Context Configuration locations for Spring XML files -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>         
+            classpath*:*/*applicationContext*.xml
+            /WEB-INF/applicationContext*.xml
+            <!-- /WEB-INF/security.xml --> 
+        </param-value>
+    </context-param>
+    <!-- spring security
+    <filter>
+        <filter-name>securityFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>springSecurityFilterChain</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
+     -->
+     
   	<!-- static_resources开头的路径，默认链接静态资源文件 -->
 	<servlet-mapping>  
 		<servlet-name>default</servlet-name>  
@@ -129,12 +156,7 @@
 		<init-param>
 			<description>文本集合，验证码值从此集合中获取</description>
 			<param-name>kaptcha.textproducer.char.string</param-name>
-			<param-value>
-			1234567890
-			abcdefghijklmnopqrstuvwxyz
-			ABCDEFGHIJKLMNOPQRSTUVWXYZ
-			@#$%+=?&amp;&lt;&gt;        
-			</param-value>
+			<param-value>1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%</param-value>
 			  <!--<param-value>abcde2345678gfynmnpwx</param-value>-->
 			<!--<param-value>慕课网教程验证码实例</param-value> -->
 		</init-param>
@@ -235,4 +257,6 @@
 		<url-pattern>/randomcode.jpg</url-pattern>
 	</servlet-mapping>
 	
+	
+
 </web-app>

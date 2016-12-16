@@ -23,12 +23,9 @@
 <!-- jquery -->
 <script type="text/javascript" src="jquery/jquery-2.2.4.js"></script>
 
-
-
 <!-- bootstrap -->
 <link type="text/css" rel="stylesheet" href="bootstrapcss/bootstrap.min.css" />
 <script type="text/javascript" src="bootstrapjs/bootstrap.min.js"></script>
-
 
 
 <!-- adminLTE -->
@@ -49,6 +46,9 @@ folder instead of downloading all of them to reduce the load.
 <!-- adminLTE js-->
 <!-- AdminLTE App -->
 <script src="adminjs/app.js"></script>
+<!-- ckeditor -->
+<script src="adminckeditor/ckeditor.js"></script>
+
 <!-- FastClick 
 <script src="/admin/plugins/fastclick/fastclick.js"></script>
 -->
@@ -80,10 +80,22 @@ folder instead of downloading all of them to reduce the load.
 <script type="text/javascript" src="js/main.js"></script> 
 <script type="text/javascript" src="js/i18n.js"></script> 
 
- <script type="text/javascript">
-<!--
+<script type="text/javascript">
 $(function () { $(".popover-hide").popover();});
-//-->
+
+
+/**
+ * 字符串是否为空
+ * @param dateStr
+ */
+function strIsNull(str){
+	if(str!=null
+			&&str.replace(/(^\s*)|(\s*$)/g,'').length>0){
+		return false;
+	}
+	return true;
+}
+
 </script>
 
 

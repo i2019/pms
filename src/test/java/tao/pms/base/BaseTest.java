@@ -15,6 +15,7 @@ public class BaseTest<T> {
 	@SuppressWarnings("unchecked")
 	public T init(String beanname) throws Exception {
 		ctx = new FileSystemXmlApplicationContext("src/main/resources/applicationContext.xml");  
+		//ctx = new FileSystemXmlApplicationContext("src/main/resources/main-servlet.xml");  
 		return (T)ctx.getBean(beanname);
 	}
 	

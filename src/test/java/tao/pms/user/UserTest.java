@@ -35,9 +35,17 @@ public class UserTest extends BaseTest<UserDao> {
 
 	@Test
 	public void test() {
-		User record=new User();
-		record.setName("bb");
-		record.setModifyTime(new Date());
+		for(int i=1;i<30;i++){
+			User record=new User();
+			record.setId(i+"a");
+			record.setName(i+"a");
+			record.setPassword(i+"a");
+			record.setRemark(i+"a");
+			record.setDelFlag(false);
+			record.setModifyTime(new Date());
+			userManager.add(record);
+		}
+		
 		//record.setId("tt"+record.getName());
 		//userDao.add(record);
 		//record.setId("ttaa");
@@ -46,16 +54,18 @@ public class UserTest extends BaseTest<UserDao> {
 		//System.out.println(userDao.getById("1"));
 		//System.out.println(userDao.getAllCount());
 		//List<User> us=userDao.getAll();
-		UserCriteria criteria=new UserCriteria();
-		criteria.setName("LJT");
-		criteria.setPassword("pass");
-		List<User> us=userDao.getByCriteria(criteria);
-		System.out.println(userDao.getByCriteriaCount(criteria)+"----------");
+		//UserCriteria criteria=new UserCriteria();
+		//criteria.setName("LJT");
+		//criteria.setPassword("pass");
+		//List<User> us=userDao.getByCriteria(criteria);
+		//System.out.println(userDao.getByCriteriaCount(criteria)+"----------");
+		/*
 		for (User user : us) {
 			System.out.println(user+"==");
 		}
-		User u=userManager.getById("1");
-		System.out.println("user==="+u);
+		*/
+		//User u=userManager.getById("1");
+		//System.out.println("user==="+u);
 	}
 
 }

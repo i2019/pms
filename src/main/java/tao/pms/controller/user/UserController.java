@@ -85,11 +85,30 @@ public class UserController {
 		return mav;
 	}
 
+	/**
+	 * 测试练习 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value={"/user_a"})
+	public ModelAndView a(Model model){
+		
+		//SearchGroup
+		List<String> lists=new ArrayList<String>();
+		for(int i=10;i<50;i++){
+			lists.add(i+"group");
+		}
+		model.addAttribute("lists", lists);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user.a.do");
+		mav.addObject(model);
+		return mav;
+	}
 
 	public UserCriteria getUserCriteria() {
 		return userCriteria;
 	}
-
 
 	public void setUserCriteria(UserCriteria userCriteria) {
 		this.userCriteria = userCriteria;

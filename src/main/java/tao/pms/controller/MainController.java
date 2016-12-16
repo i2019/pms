@@ -1,5 +1,7 @@
 package tao.pms.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.Resource;
@@ -27,6 +29,12 @@ public class MainController {
 	@RequestMapping(value={"/"})
 	public ModelAndView index(Model model,HttpServletRequest request){
 		
+		List<String> menus=new ArrayList<String>();
+		for(int i=1;i<20;i++){
+			menus.add(i+"Menu");
+		}
+		model.addAttribute("menus", menus);
+		
 	    //国际化 默认语言为中文
 	    if(null==request.getSession().getAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME)){
 	    	Locale locale = new Locale("zh", "CN"); 
@@ -35,7 +43,7 @@ public class MainController {
  
 	   
         ModelAndView mav = new ModelAndView();
-
+        mav.addObject(model);
 		if(null==request.getSession().getAttribute("LoginUser")){
 			mav.setViewName("default.login");
 		}else{
