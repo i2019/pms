@@ -13,7 +13,7 @@
 	</div>
 </div>
 
-<form action="user_login" method="post">
+<form method="post" name="login">
 <div class="content">
 	<center>
 		<div class="con">
@@ -30,7 +30,7 @@
 					<input  name="password" type="password"/>
 				</div>
 				<div class="con_input">
-					<img alt="random" src="randomcode.jpg" onclick="changeR(this)" style="cursor: pointer;">
+					<img alt="random" src="<c:url value='/randomcode.jpg'/>" onclick="changeR(this)" style="cursor: pointer;">
 				    <input class="verification" name="r" type="text"/>
 				</div>
 				<input type="submit" value="<spring:message code="system.user.Login"/>" class="submit-btn"/>
@@ -42,12 +42,13 @@
 </form>
 
 <div id="footer"> <tiles:insertAttribute name="foot" /></div>			
-				
+		
 </body>
 <script type="text/javascript">
 	function changeR(node){
-		// 用于点击时产生不同的验证码
-		node.src = "randomcode.jpg?time="+new Date().getTime() ;	
+		// 用于点击时产生不同的验证码 
+		node.src = "<c:url value='/randomcode.jpg?time='/>"+new Date().getTime();	
+		
 	}
 </script>
 </html>

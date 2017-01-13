@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public class BaseTest<T> {
+
 	private ApplicationContext ctx;
 
 	/**
@@ -15,7 +16,6 @@ public class BaseTest<T> {
 	@SuppressWarnings("unchecked")
 	public T init(String beanname) throws Exception {
 		ctx = new FileSystemXmlApplicationContext("src/main/resources/applicationContext.xml");  
-		//ctx = new FileSystemXmlApplicationContext("src/main/resources/main-servlet.xml");  
 		return (T)ctx.getBean(beanname);
 	}
 	
@@ -23,4 +23,5 @@ public class BaseTest<T> {
 		ctx = new FileSystemXmlApplicationContext("src/main/resources/applicationContext.xml");  
 		return ctx.getBean(beanname);
 	}
+
 }

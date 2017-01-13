@@ -14,7 +14,6 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
-			<scope>provided</scope>
 		</dependency>
 		
 		<dependency>
@@ -36,7 +35,33 @@
 			<version>${jstl.version}</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<!-- commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.github.stefanbirkner/system-rules -->
+		<dependency>
+			<groupId>com.github.stefanbirkner</groupId>
+			<artifactId>system-rules</artifactId>
+			<version>1.16.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.3.4.Final</version>
+		</dependency>
+		
+		<!-- commons-logging -->
 		<dependency>
 		    <groupId>commons-logging</groupId>
 		    <artifactId>commons-logging</artifactId>
@@ -48,6 +73,7 @@
 		    <artifactId>slf4j-log4j12</artifactId>
 		    <version>1.7.21</version>
 		</dependency>
+		
 		<!-- test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -70,6 +96,11 @@
 		</dependency>
 		
 		<!-- spring -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -156,13 +187,12 @@
 		<!--
 		The complete Tiles dependency with all supported technologies is achievable 
 		with the following dependency declaration:		
-		 <dependency>
+	  <dependency>
 	    <groupId>org.apache.tiles</groupId>
 	    <artifactId>tiles-extras</artifactId>
 	    <version>${tiles.version}</version>
-	 </dependency>	
-		 
-		 -->    
+	 </dependency>	 
+	 -->    
 	
 	  <!-- 
 	  The basic Tiles dependency with only servlet support can be added this way:
@@ -208,15 +238,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
 		<spring.version>4.1.5.RELEASE</spring.version>
 		<spring.security.version>4.1.3.RELEASE</spring.security.version>
-		
 		<tiles.version>3.0.7</tiles.version>
 		<jstl.version>1.1.2</jstl.version>
 		<displaytag.version>1.2</displaytag.version>
 	</properties>
-
 
 </project>
 	

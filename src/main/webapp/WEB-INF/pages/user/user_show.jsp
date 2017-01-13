@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/pages/base.jsp"%>
+
  <a href="user_edit"><spring:message code="system.user.UserEdit"/></a>
  <br/>
 <style type="text/css">

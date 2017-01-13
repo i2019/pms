@@ -25,6 +25,7 @@ public class SimplePageTag extends TagSupport {
 	// tag param
 	private String totalSizeKey; // total num saved destination
 
+	@SuppressWarnings("unused")
 	private String styleClass; // css style Name
 
 	private String requestUrl = null;
@@ -182,7 +183,7 @@ public class SimplePageTag extends TagSupport {
 	}
 
 	// 请求参数
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "unused", "rawtypes" })
 	private Map getRequestParam(ServletRequest request) {
 		Enumeration names = request.getParameterNames();
 		Map params = new HashMap();
@@ -195,7 +196,7 @@ public class SimplePageTag extends TagSupport {
 		return params;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes" })
 	private String populatRequestUrl(ServletRequest request) {
 		String paramStr = "";
 		Enumeration names = request.getParameterNames();

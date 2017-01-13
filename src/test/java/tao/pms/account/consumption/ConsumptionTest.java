@@ -29,12 +29,11 @@ public class ConsumptionTest extends BaseTest<ConsumptionDao> {
 	@Test
 	public void test() {
 		Consumption record=new Consumption();
-		
-		//record.setId(System.currentTimeMillis()+"ID");
-		
-		//System.out.println(consumptionDao.add(record));
-		
+		record.setId(System.currentTimeMillis()+"Test");
 		System.out.println(consumptionService.add(record));
+		record.setId(System.currentTimeMillis()+"Test");
+		System.out.println(consumptionDao.add(record));
 	}
 
 }
+

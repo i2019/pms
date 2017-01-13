@@ -18,6 +18,7 @@
             <!-- /WEB-INF/security.xml --> 
         </param-value>
     </context-param>
+    
     <!-- spring security
     <filter>
         <filter-name>securityFilter</filter-name>
@@ -65,6 +66,7 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    
 	<!-- spring mvc配置开始  -->
 	<!-- 
 	Springmvc本质上就是一个Servlet,DispatcherServle就是Springmvc的入口。
@@ -88,7 +90,8 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    
+     
+     <!--  
      <servlet>
         <servlet-name>user</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -101,7 +104,9 @@
         <servlet-name>user</servlet-name>
         <url-pattern>/user_*</url-pattern>
     </servlet-mapping>
+    -->
     <!-- spring mvc配置结束  -->
+
 
 	<!-- 登陆验证码Kaptcha 2-->
 	<servlet>
@@ -204,13 +209,14 @@
 		</init-param>
 		<init-param>
 			<description>
-				图片样式： 水纹com.google.code.kaptcha.impl.WaterRipple
+				图片样式： 
+				水纹com.google.code.kaptcha.impl.WaterRipple
 				鱼眼com.google.code.kaptcha.impl.FishEyeGimpy
 				阴影com.google.code.kaptcha.impl.ShadowGimpy
 			</description>
 			<param-name>kaptcha.obscurificator.impl</param-name>
 			<param-value>
-				com.google.code.kaptcha.impl.FishEyeGimpy
+				com.google.code.kaptcha.impl.WaterRipple
 			</param-value>
 		</init-param>
 		<init-param>
@@ -223,7 +229,7 @@
 		<init-param>
 			<description>背景颜色渐变，开始颜色</description>
 			<param-name>kaptcha.background.clear.from</param-name>
-			<param-value>green</param-value>
+			<param-value>blue</param-value>
 		</init-param>
 		<init-param>
 			<description>背景颜色渐变，结束颜色</description>
@@ -256,7 +262,5 @@
 		<servlet-name>Kaptcha</servlet-name>
 		<url-pattern>/randomcode.jpg</url-pattern>
 	</servlet-mapping>
-	
-	
 
 </web-app>

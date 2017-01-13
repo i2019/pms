@@ -16,7 +16,7 @@ import tao.pms.service.account.ConsumptionService;
 import tao.pms.service.base.BaseManagerImpl;
 import tao.pms.util.CommonUtil;
 
-@Service
+@Service("consumptionService")
 public class ConsumptionServiceImpl extends BaseManagerImpl implements ConsumptionService {
 
 	@Resource

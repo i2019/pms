@@ -18,6 +18,7 @@ import tao.pms.model.user.UserResult;
 import tao.pms.service.user.UserService;
 
 @Controller
+@RequestMapping("/user")  
 public class UserController {
     @Autowired
     private UserService userService;
@@ -26,7 +27,8 @@ public class UserController {
     private UserResult userResult=new UserResult();
     private List<User> userList=new ArrayList<User>();
     
-	@RequestMapping(value={"/user_login"})
+    /*
+	@RequestMapping(value={"/login"})
 	public ModelAndView login(Model model,HttpServletRequest request){
 		ModelAndView mav = new ModelAndView();
 		
@@ -46,6 +48,7 @@ public class UserController {
 						request.getSession().setAttribute("LoginUser", userList.get(0));
 						mav.setViewName("default.layout");
 						mav.addObject("captcha", "true");
+						
 					}else
 						mav.setViewName("default.login");
 				}else
@@ -59,9 +62,9 @@ public class UserController {
 		
 		return mav;
 	}
+	*/
 	
-	
-	@RequestMapping(value={"/user_show"})
+	@RequestMapping(value={"/show"})
 	public ModelAndView show(Model model){
 		userResult=userService.getAll();
 		if(null!=userResult){
@@ -77,7 +80,7 @@ public class UserController {
 		return mav;
 	}
 	
-	@RequestMapping(value={"/user_edit"})
+	@RequestMapping(value={"/edit"})
 	public ModelAndView edit(Model model){
 		
 		ModelAndView mav = new ModelAndView();
@@ -90,7 +93,7 @@ public class UserController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value={"/user_a"})
+	@RequestMapping(value={"/a"})
 	public ModelAndView a(Model model){
 		
 		//SearchGroup
