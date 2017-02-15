@@ -9,79 +9,167 @@
 	<name>PMS Webapp</name>
 	<url>http://maven.apache.org</url>
 
+	<build>
+		<plugins>
+			<!-- 编译插件 -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- 将源文件拷贝到指定的文件夹 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<excludes>
+										<exclude>applicationContext.xml</exclude>
+										<exclude>*-servlet.xml</exclude>
+									</excludes>
+									<filtering>true</filtering>
+								</resource>
+								<resource>
+									<directory>src/main/resources</directory>
+									<includes>
+										<include>applicationContext.xml</include>
+										<include>*-servlet.xml</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>src/main/java</directory>
+									<includes>
+										<include>**/*.xml</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 将依赖的jar文件拷贝到指定的文件夹 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<excludeScope>provided</excludeScope>
+							<outputDirectory>src/main/webapp/WEB-INF/lib</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.3.6.RELEASE</spring.version>
+		<spring.security.version>4.2.1.RELEASE</spring.security.version>
+		<tiles.version>3.0.7</tiles.version>
+		<jstl.version>1.1.2</jstl.version>
+		<servlet.version>3.1.0</servlet.version>
+		<servlet.jsp.version>2.2</servlet.jsp.version>
+		<commons.lang.version>2.6</commons.lang.version>
+		<commons.lang3.version>3.5</commons.lang3.version>
+		<displaytag.version>1.2</displaytag.version>
+		<commons-logging.version>1.2</commons-logging.version>
+		<hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
+		<slf4j.version>1.7.22</slf4j.version> 
+		<junit.version>4.12</junit.version> 
+		<mysql-connector.version>6.0.5</mysql-connector.version>
+		<kaptcha.version>2.3.2</kaptcha.version>
+		<c3p0.version>0.9.2</c3p0.version>
+		<mybatis.version>3.4.2</mybatis.version>
+		<mybatis-spring.version>1.3.1</mybatis-spring.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>${servlet.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
-			<version>2.0</version>
+			<version>${servlet.jsp.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>${jstl.version}</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
+			<version>${commons.lang.version}</version>
 		</dependency>
-		<!-- commons-lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.5</version>
+			<version>${commons.lang3.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.github.stefanbirkner/system-rules -->
 		<dependency>
 			<groupId>com.github.stefanbirkner</groupId>
 			<artifactId>system-rules</artifactId>
 			<version>1.16.1</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>5.3.4.Final</version>
+			<version>${hibernate-validator.version}</version>
 		</dependency>
-		
-		<!-- commons-logging -->
-		<dependency>
-		    <groupId>commons-logging</groupId>
-		    <artifactId>commons-logging</artifactId>
-		    <version>1.2</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-log4j12</artifactId>
-		    <version>1.7.21</version>
-		</dependency>
-		
+
 		<!-- test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- displaytag -->
 		<dependency>
 			<groupId>displaytag</groupId>
@@ -94,12 +182,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<!-- spring -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-web</artifactId>
-		    <version>${spring.version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -157,93 +245,60 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
-		
+
 		<!-- db -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
+			<version>${mysql-connector.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
-			<version>0.9.2</version>
+			<version>${c3p0.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.2.2</version>
+			<version>${mybatis.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>1.2.5</version>
+			<version>${mybatis-spring.version}</version>
 		</dependency>
-		
-		<!-- Tiles -->
-		<!--
-		The complete Tiles dependency with all supported technologies is achievable 
-		with the following dependency declaration:		
-	  <dependency>
-	    <groupId>org.apache.tiles</groupId>
-	    <artifactId>tiles-extras</artifactId>
-	    <version>${tiles.version}</version>
-	 </dependency>	 
-	 -->    
-	
-	  <!-- 
-	  The basic Tiles dependency with only servlet support can be added this way:
-	   -->
-	  <dependency>
-	    <groupId>org.apache.tiles</groupId>
-	    <artifactId>tiles-servlet</artifactId>
-	    <version>${tiles.version}</version>
-	  </dependency>
-	  <!-- 
-		If you need a dependency to Tiles JSP support, Declare the dependency this way:
-	 -->
-	  <dependency>
-	    <groupId>org.apache.tiles</groupId>
-	    <artifactId>tiles-jsp</artifactId>
-	    <version>${tiles.version}</version>
-	  </dependency>
-	  
-	  <!-- 验证码 
-	  https://mvnrepository.com/artifact/com.github.penggle/kaptcha -->
-	 <dependency>
-	    <groupId>com.github.penggle</groupId>
-	    <artifactId>kaptcha</artifactId>
-	    <version>2.3.2</version>
-	 </dependency>
-	  
-	</dependencies>
-	
-	<build>
-		<plugins>
-			<!-- 编译插件 -->
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>4.1.5.RELEASE</spring.version>
-		<spring.security.version>4.1.3.RELEASE</spring.security.version>
-		<tiles.version>3.0.7</tiles.version>
-		<jstl.version>1.1.2</jstl.version>
-		<displaytag.version>1.2</displaytag.version>
-	</properties>
+		<!-- Tiles -->
+		<!-- The complete Tiles dependency with all supported technologies is achievable 
+			with the following dependency declaration: -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>${tiles.version}</version>
+		</dependency>
+		<!-- The basic Tiles dependency with only servlet support can be added 
+			this way: -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+			<version>${tiles.version}</version>
+		</dependency>
+		<!-- If you need a dependency to Tiles JSP support, Declare the dependency 
+			this way: -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${tiles.version}</version>
+		</dependency>
+
+		<!-- 验证码 -->
+		<dependency>
+			<groupId>com.github.penggle</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>${kaptcha.version}</version>
+		</dependency>
+
+	</dependencies>
 
 </project>
 	
