@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,13 +33,7 @@ public class UserController {
     
 	@RequestMapping(value={"/show"})
 	public ModelAndView show(Model model){
-		userResult=userService.getAll();
-		if(null!=userResult){
-			userList=userResult.getResultList();
-			model.addAttribute("userList", userList);
-			model.addAttribute("userResult", userResult);
-		}
-
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user.show.do");
 		mav.addObject(model);
@@ -48,13 +43,32 @@ public class UserController {
 	
 	@RequestMapping(value={"/edit"})
 	public ModelAndView edit(Model model, @RequestParam(value="id",required=false)String id){
-		User user=userService.getById(id);
+		User user;
+		if(StringUtils.hasText(id)){
+			user=userService.getById(id);
+		}else{
+			user=new User();
+		}
+	
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user.edit.do");
 		mav.addObject(user);
 		return mav;
 	}
-
+	
+	@RequestMapping(value={"/save"})
+	public ModelAndView save(Model model,User user){
+		if(null!=user&&StringUtils.isEmpty(user.getId())){
+			userService.add(user);
+		}else if(null!=user&&StringUtils.hasText(user.getId())){
+			userService.update(user);
+		}
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user.show.do");
+		mav.addObject(user);
+		return mav;
+	}
+	
 	@RequestMapping(value={"/data"})
 	public void data(HttpServletResponse response){
 		

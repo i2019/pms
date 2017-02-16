@@ -28,6 +28,7 @@ public class UserServiceImpl extends BaseManagerImpl implements UserService {
 			if(StringUtils.isEmpty(record.getId())){
 				record.setId(CommonUtil.generateUUID());
 			}
+			record=(User) setCreateDefault(record);
 			return userDao.add(record);
 		}
 		return ReturnConstant.EMPTY;
@@ -35,7 +36,8 @@ public class UserServiceImpl extends BaseManagerImpl implements UserService {
 
 	@Override
 	public Integer update(User record) {
-		if(!StringUtils.isEmpty(record)&&StringUtils.isEmpty(record.getId())){
+		if(!StringUtils.isEmpty(record)&&StringUtils.hasText(record.getId())){
+			record=(User) setModifyDefault(record);
 			return userDao.update(record);
 		}
 		return ReturnConstant.EMPTY;
