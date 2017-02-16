@@ -1,21 +1,24 @@
 package tao.pms.controller.user;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 import tao.pms.model.user.User;
 import tao.pms.model.user.UserCriteria;
 import tao.pms.model.user.UserResult;
 import tao.pms.service.user.UserService;
+import tao.pms.util.DateUtils;
 
 @Controller
 @RequestMapping("/user")  
@@ -27,43 +30,6 @@ public class UserController {
     private UserResult userResult=new UserResult();
     private List<User> userList=new ArrayList<User>();
     
-    /*
-	@RequestMapping(value={"/login"})
-	public ModelAndView login(Model model,HttpServletRequest request){
-		ModelAndView mav = new ModelAndView();
-		
-		//验证码
-		String k = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-		String r = request.getParameter("r");
-		if (k!=null&&k.equalsIgnoreCase(r)){
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
-			if(!StringUtils.isEmpty(username)&&!StringUtils.isEmpty(password)){
-				userCriteria.setName(username);
-				userCriteria.setPassword(password);
-				userResult=userService.getByCriteria(userCriteria);
-				if(null!=userResult){
-					List<User> userList=userResult.getResultList();
-					if(userList!=null&&userList.size()>0&&userList.get(0)!=null){
-						request.getSession().setAttribute("LoginUser", userList.get(0));
-						mav.setViewName("default.layout");
-						mav.addObject("captcha", "true");
-						
-					}else
-						mav.setViewName("default.login");
-				}else
-					mav.setViewName("default.login");
-			}else{
-				mav.setViewName("default.login");
-			}
-		}else{
-			mav.setViewName("default.login");
-		}
-		
-		return mav;
-	}
-	*/
-	
 	@RequestMapping(value={"/show"})
 	public ModelAndView show(Model model){
 		userResult=userService.getAll();
@@ -81,34 +47,35 @@ public class UserController {
 	}
 	
 	@RequestMapping(value={"/edit"})
-	public ModelAndView edit(Model model){
-		
+	public ModelAndView edit(Model model, @RequestParam(value="id",required=false)String id){
+		User user=userService.getById(id);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user.edit.do");
+		mav.addObject(user);
 		return mav;
 	}
 
-	/**
-	 * 测试练习 
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value={"/a"})
-	public ModelAndView a(Model model){
+	@RequestMapping(value={"/data"})
+	public void data(HttpServletResponse response){
 		
-		//SearchGroup
-		List<String> lists=new ArrayList<String>();
-		for(int i=10;i<50;i++){
-			lists.add(i+"group");
+		userResult=userService.getAll();
+		Map<String,Object> resultMap = new HashMap<String, Object>();
+		if(null!=userResult){
+			resultMap.put("data", userResult);
 		}
-		model.addAttribute("lists", lists);
+		ajaxResponse(response,JSON.toJSONStringWithDateFormat(resultMap, DateUtils.YYYYMMDD,SerializerFeature.WriteMapNullValue));
 		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("user.a.do");
-		mav.addObject(model);
-		return mav;
 	}
-
+	
+	public void ajaxResponse(HttpServletResponse response,String text) {
+		try {
+			response.getWriter().print(text);
+			response.getWriter().flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public UserCriteria getUserCriteria() {
 		return userCriteria;
 	}

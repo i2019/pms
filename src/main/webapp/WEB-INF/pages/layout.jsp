@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>List</title>
+<title>主页</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -21,34 +21,39 @@
 		</a>
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
+			
 				<!-- Messages-->
-				<li class="dropdown messages-menu"><a href="#"
-					class="dropdown-toggle" data-toggle="dropdown"> <i
-						class="fa fa-envelope-o"></i> <span class="label label-success">4</span>
-				</a>
+				<!--
+				<li class="dropdown messages-menu">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+						<i class="fa fa-envelope-o"></i> <span class="label label-success">4</span>
+					</a>
 					<ul class="dropdown-menu">
 						<li class="header">You have 4 messages</li>
-					</ul></li>
-				<li class="dropdown notifications-menu"><a href="#"
-					class="dropdown-toggle" data-toggle="dropdown"> <i
-						class="fa fa-bell-o"></i> <span class="label label-warning">10</span>
-				</a>
+					</ul>
+			    </li>
+				<li class="dropdown notifications-menu">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+						<i class="fa fa-bell-o"></i> <span class="label label-warning">10</span>
+					</a>
 					<ul class="dropdown-menu">
 						<li class="header">You have 10 notifications</li>
 						<li></li>
-					</ul></li>
+					</ul>
+				</li>
+				-->
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="hidden-xs">TESTER</span>
+						<span class="hidden-xs">用户名</span>
 					</a>
 					<ul class="dropdown-menu">
 						<!-- Menu Footer-->
 						<li class="user-footer">
 							<div class="pull-left">
-								<a href="#" class="btn btn-default btn-flat">Profile</a>
+								<a href="#" class="btn btn-default btn-flat">用户介绍</a>
 							</div>
 							<div class="pull-right">
-								<a href="#" class="btn btn-default btn-flat">Sign out</a>
+								<a href="#" class="btn btn-default btn-flat">用户登出</a>
 							</div>
 						</li>
 					</ul>
@@ -69,7 +74,7 @@
 	        	 <li class="treeview">
 		          <a href="#">
 			            <i class="fa fa-folder"></i> 
-			            <span>Examples</span>
+			            <span>主菜单</span>
 			            <span class="pull-right-container">
 			              	<i class="fa fa-angle-left pull-right"></i>
 			            </span>
@@ -91,9 +96,7 @@
 
 	<!-- content-wrapper -->
 	<div class="content-wrapper">
-		 <div id="content">
-		  	 <tiles:insertAttribute name="main" />
-		</div>
+		 <tiles:insertAttribute name="main" />
 	</div>
 	<!-- ./content-wrapper -->
 	
@@ -101,7 +104,7 @@
     	<div class="pull-right hidden-xs">
       		<b>Version</b> 1.0.0
    		 </div>
-    	<strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+    	<strong>Copyright &copy; 2016-2017 <a href="#">TY PMS</a>.</strong> All rights reserved.
   	</footer>	
 	
 </div>

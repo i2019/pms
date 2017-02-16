@@ -16,18 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-
 import tao.pms.model.user.User;
 import tao.pms.model.user.UserCriteria;
 import tao.pms.model.user.UserResult;
-import tao.pms.service.account.ConsumptionService;
 import tao.pms.service.user.UserService;
 
 @Controller
 public class MainController {
 
-	@Autowired
-	private ConsumptionService consumptionManager;
 	@Autowired
 	private UserService userService;
 	  
@@ -53,6 +49,7 @@ public class MainController {
         mav.addObject(model);
         boolean logined=false;
 		if(null==request.getSession().getAttribute("LoginUser")){
+			//为了方便开发，去掉验证码验证
 			String k = "1";//(String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
 			String r = "1";//request.getParameter("r");
 			if (k!=null&&k.equalsIgnoreCase(r)){

@@ -20,11 +20,12 @@
 <!-- 静态资源 -->
 
 <!-- jquery -->
-<script type="text/javascript" src="<c:url value="/jquery/jquery-2.2.4.js" />"></script>
+<script type="text/javascript" src="<c:url value="/jquery/jquery-2.2.3.min.js" />"></script>
 
 <!-- bootstrap --> 
 <link type="text/css" rel="stylesheet" href="<c:url value="/bootstrapcss/bootstrap.min.css" />" />
 <script type="text/javascript" src="<c:url value="/bootstrapjs/bootstrap.min.js" />"></script>
+
 
 
 <!-- adminLTE -->
@@ -36,16 +37,20 @@
 <link rel="stylesheet" href="<c:url value="/admincss/ionicons.css" />">
 <!-- Theme style -->
 <link rel="stylesheet" href="<c:url value="/admincss/AdminLTE.css" />">
-<link rel="stylesheet" href="<c:url value="/adminskins/skin-blue.css" />">
+<link rel="stylesheet" href="<c:url value="/adminskins/skin-blue.min.css" />">
 
 <!-- adminLTE js-->
 <!-- AdminLTE App -->
 <script src="<c:url value="/adminjs/app.js" />"></script>
 
 <!-- plugins -->
-<!-- ckeditor -->
 <script src="<c:url value="/adminckeditor/ckeditor.js" />"></script>
 
+<link rel="stylesheet" href="<c:url value="/admindatatables/jquery.dataTables.css" />">
+<link rel="stylesheet" href="<c:url value="/admindatatables/jquery.dataTables.min.css" />">
+<script src="<c:url value="/admindatatables/jquery.dataTables.js" />"></script>
+<script src="<c:url value="/admindatatables/dataTables.bootstrap.min.js" />"></script>
+<script src="<c:url value="/admindatatables/dataTabelSearch.js" />"></script>
 
 
 <!-- 自定义 -->

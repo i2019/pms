@@ -18,25 +18,7 @@
             <!-- /WEB-INF/security.xml --> 
         </param-value>
     </context-param>
-    
-    <!-- spring security
-    <filter>
-        <filter-name>securityFilter</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <init-param>
-            <param-name>targetBeanName</param-name>
-            <param-value>springSecurityFilterChain</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>securityFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
-    </filter-mapping>
-     -->
-     
+
   	<!-- static_resources开头的路径，默认链接静态资源文件 -->
 	<servlet-mapping>  
 		<servlet-name>default</servlet-name>  
@@ -91,20 +73,6 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
      
-     <!--  
-     <servlet>
-        <servlet-name>user</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-        	<param-name>contextConfigLocation</param-name>
-        	<param-value>WEB-INF/config/user-servlet.xml</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>user</servlet-name>
-        <url-pattern>/user_*</url-pattern>
-    </servlet-mapping>
-    -->
     <!-- spring mvc配置结束  -->
 
 

@@ -76,6 +76,8 @@
 	<mvc:resources mapping="/adminslider/**" location="/static_resources/tool/adminlte/plugins/bootstrap-slider/" />
 	<mvc:resources mapping="/adminckeditor/**" location="/static_resources/tool/adminlte/plugins/ckeditor/" />
 
+	<mvc:resources mapping="/admindatatables/**" location="/static_resources/tool/adminlte/plugins/datatables/" />
+	
    <!-- 定义tiles视图解析器 -->
    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
     <property name="viewClass">
