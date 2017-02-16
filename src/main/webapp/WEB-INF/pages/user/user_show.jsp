@@ -1,32 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <script>
-
 $(document).ready(function() {
-    var dt=$('#datatable').DataTable( {
+    var table=$('#datatable').DataTable( {
         "processing": true,
         "columns": [
 			{ "data": null },
-            { "data": "id" },
             { "data": "name" },
             { "data": "createTime" },
             { "data": "remark" }
         ],
         "columnDefs": [
-            	{
-            		"targets": [1],
-	            	"render": function(data, type, row, meta) {
-	                	return '<a href="edit?id=' + row.id + '" target="_blank">' + row.id + '</a>';
-	            	}
-            	},{
+                {
             		"targets": [0],
 	            	"render": function(data, type, row, meta) {
-	                	return meta.row+1;
+	                	return '<a href="edit?id=' + row.id + '" target="_blank">' + meta.row+1 + '</a>';
 	            	}
             	}
         ],
         "ajax":  function (data, callback, settings) {
-        	var param={};
+        	var param=$("#searchForm").serialize();
         	$.ajax({
         		url: "data",
        			type: "POST",
@@ -44,6 +37,11 @@ $(document).ready(function() {
         }
     } );
     
+    $("#btn_search").click(function(){
+    	debugger;
+    	table.ajax.param=$("#searchForm").serialize();
+    	table.ajax.reload();
+    });
 } );
 
 </script>
@@ -59,46 +57,32 @@ $(document).ready(function() {
 	    </div>
     </div>
 	<div class="box-body">
-	   <form class="form-horizontal">
+	   <form name="criteria" class="form-horizontal" id="searchForm" method="post">
 	       <div class="row">
 	         <div class="col-md-6">
 	           <div class="form-group">
-	              <label for="inputEmail3" class="col-sm-2 control-label">查询条件</label>
+	              <label for="name" class="col-sm-2 control-label">用户名</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" placeholder="name">
+                    <input name="criteria.name" type="text" class="form-control" id="name" placeholder="用户名">
                   </div>
 	           </div>
 	         </div>
 	         <div class="col-md-6">
 	           <div class="form-group">
-	              <label for="inputPassword3" class="col-sm-2 control-label">id</label>
+	              <label for="id" class="col-sm-2 control-label">用户id</label>
                   <div class="col-sm-10">
-                   	  <input type="text" class="form-control" id="inputPassword3" placeholder="id">
+                   	  <input name="criteria.id" type="text" class="form-control" id="id" placeholder="用户id">
                   </div>
 	           </div>
 	         </div> 
 	       </div>
-	       <div class="row">
-	         <div class="col-md-6">
-	           <div class="form-group">
-	              <label for="inputEmail3" class="col-sm-2 control-label">name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" placeholder="name">
-                  </div>
-	           </div>
-	         </div>
-	         <div class="col-md-6">
-	           <div class="form-group">
-	              <label for="inputPassword3" class="col-sm-2 control-label">id</label>
-                  <div class="col-sm-10">
-                   	  <input type="text" class="form-control" id="inputPassword3" placeholder="id">
-                  </div>
-	           </div>
-	         </div> 
-	       </div>
+	       
+	        <div class="box-footer">
+		     	 <button type="reset" class="btn btn-default">重置</button>
+			     <button id="btn_search" type="button" class="btn btn-primary">查询</button>
+		    </div>
 	    </form>  
 	 </div>
-     <div class="box-footer"></div>
    </div>
    
    <!-- 查询结果 -->
@@ -117,7 +101,6 @@ $(document).ready(function() {
 					<thead>
 						<tr>
 						  <th>序号</th>
-						  <th>用户ID</th>
 						  <th>用户名</th>
 						  <th>创建时间</th>
 						  <th>备注</th>
@@ -127,7 +110,6 @@ $(document).ready(function() {
 					<tfoot>
 						<tr>
 						  <th>序号</th>
-						  <th>用户ID</th>
 						  <th>用户名</th>
 						  <th>创建时间</th>
 						  <th>备注</th>

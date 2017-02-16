@@ -34,7 +34,7 @@
 	            </div>
 	          </div>
 	          <div class="box-footer">
-	            <button type="reset" class="btn btn-default">取消</button>
+	            <button type="reset" class="btn btn-default">重置</button>
 	            <button type="submit" class="btn btn-primary">保存</button>
 	          </div>
 	    </form>

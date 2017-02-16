@@ -14,6 +14,7 @@ public class BaseCriteria implements Serializable{
 	/**
 	 * 共有字段
 	 */
+	 private String id;
 	 private String remark;//备注
 
      private boolean delFlag;//删除标志
@@ -43,7 +44,15 @@ public class BaseCriteria implements Serializable{
 	 private Date endTimeEnd; 
 	 private Date endTime;
 	 
-     public Date getCreateTimeBegin() {
+     public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Date getCreateTimeBegin() {
 		return createTimeBegin;
 	 }
 

@@ -6,6 +6,10 @@ import tao.pms.model.base.BaseCriteria;
 
 public class UserCriteria extends BaseCriteria{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9040042818093430675L;
 	private String name;//操作员名称
 	private List<String> nameList;
 

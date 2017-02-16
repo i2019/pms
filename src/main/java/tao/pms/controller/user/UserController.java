@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     
-    private UserCriteria userCriteria=new UserCriteria();
+    private UserCriteria criteria=new UserCriteria();
     private UserResult userResult=new UserResult();
     private List<User> userList=new ArrayList<User>();
     
@@ -37,7 +39,7 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user.show.do");
 		mav.addObject(model);
-		
+		mav.addObject(criteria);
 		return mav;
 	}
 	
@@ -70,9 +72,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value={"/data"})
-	public void data(HttpServletResponse response){
+	public void data(HttpServletRequest request,HttpServletResponse response){
 		
-		userResult=userService.getAll();
+		userResult=userService.getByCriteria(criteria);
 		Map<String,Object> resultMap = new HashMap<String, Object>();
 		if(null!=userResult){
 			resultMap.put("data", userResult);
@@ -90,14 +92,13 @@ public class UserController {
 		}
 	}
 	
-	public UserCriteria getUserCriteria() {
-		return userCriteria;
+	public UserCriteria getCriteria() {
+		return criteria;
 	}
 
-	public void setUserCriteria(UserCriteria userCriteria) {
-		this.userCriteria = userCriteria;
+	public void setCriteria(UserCriteria criteria) {
+		this.criteria = criteria;
 	}
-
 
 	public UserResult getUserResult() {
 		return userResult;
