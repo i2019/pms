@@ -8,7 +8,8 @@
 
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 
@@ -21,8 +22,11 @@
 
 <!-- jquery -->
 <link type="text/css" rel="stylesheet" href="<c:url value="/jquery/tipso.css" />" />
+
 <script type="text/javascript" src="<c:url value="/jquery/jquery-2.2.3.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/jquery/tipso.js" />"></script>
+<script type="text/javascript" src="<c:url value="/jquery/jquery.validate.js" />"></script>
+
 
 <!-- bootstrap --> 
 <link type="text/css" rel="stylesheet" href="<c:url value="/bootstrapcss/bootstrap.min.css" />" />
@@ -47,11 +51,11 @@
 <!-- plugins -->
 <script src="<c:url value="/adminckeditor/ckeditor.js" />"></script>
 
-<link rel="stylesheet" href="<c:url value="/admindatatables/jquery.dataTables.min.css" />">
 <link rel="stylesheet" href="<c:url value="/admindatatables/dataTables.bootstrap.css" />">
 <script src="<c:url value="/admindatatables/jquery.dataTables.js" />"></script>
 <script src="<c:url value="/admindatatables/dataTables.bootstrap.min.js" />"></script>
 <!--  
+<link rel="stylesheet" href="<c:url value="/admindatatables/jquery.dataTables.min.css" />">
 <script src="<c:url value="/admindatatables/dataTabelSearch.js" />"></script>
 -->
 

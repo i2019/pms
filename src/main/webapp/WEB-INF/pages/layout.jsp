@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>主页</title>
+<title>PMS</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -44,16 +44,16 @@
 				-->
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="hidden-xs">用户名</span>
+						<span class="hidden-xs">当前用户</span>
 					</a>
 					<ul class="dropdown-menu">
 						<!-- Menu Footer-->
 						<li class="user-footer">
 							<div class="pull-left">
-								<a href="#" class="btn btn-default btn-flat">用户介绍</a>
+								<a href="#" class="btn btn-default btn-flat"><i class="fa fa-cogs"></i>设置</a>
 							</div>
 							<div class="pull-right">
-								<a href="#" class="btn btn-default btn-flat">用户登出</a>
+								<a href="#" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i>登出</a>
 							</div>
 						</li>
 					</ul>
@@ -72,20 +72,19 @@
 	      <!-- sidebar menu -->
 	      <ul class="sidebar-menu">
 	        	 <li class="treeview">
-		          <a href="#">
-			            <i class="fa fa-folder"></i> 
-			            <span>主菜单</span>
-			            <span class="pull-right-container">
-			              	<i class="fa fa-angle-left pull-right"></i>
-			            </span>
-		          </a>
-		          <ul class="treeview-menu">
-		            <li>
-		            	<a href="<c:url value="/user/show"/>">
-		            		<i class="fa fa-circle-o"></i> User
-		            	</a>
-		            </li>
-		          </ul>
+			          <a href="#">
+				            <i class="fa  fa-gear (alias)"></i> <span>系统</span>
+				            <span class="pull-right-container">
+				              	<i class="fa fa-angle-left pull-right"></i>
+				            </span>
+			          </a>
+			          <ul class="treeview-menu">
+			            <li>
+			            	<a href="<c:url value="/user/show"/>">
+			            		<i class="fa fa-users"></i>用户
+			            	</a>
+			            </li>
+			          </ul>
        		 </li>
 	      </ul>
 	      

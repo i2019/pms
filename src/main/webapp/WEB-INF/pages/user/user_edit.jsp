@@ -17,27 +17,42 @@
 	    </div>
     </div>
 	<div class="box-body">   
-	    <form name="user" class="form-horizontal" action="<c:url value="save" />" method="post">
+	    <sf:form commandName="userForm" action="save" class="form-horizontal" method="POST">
+	   		  <sf:errors path="*" element="div" cssClass="errors" />	
 	          <input type="hidden" name="id" value="${user.id }"/>
 	          <div class="box-body">
 	            <div class="form-group">
-	              <label for="user_name" class="col-sm-2 control-label">用户名</label>
-	              <div class="col-sm-10">
-	                <input name="name" value="${user.name }" type="text" class="form-control" id="user_name" placeholder="用户名">
+	              <sf:label path="name" cssClass="col-sm-2 control-label" cssErrorClass="error">用户名</sf:label>
+	              <div class="col-sm-5">
+	                  <sf:input cssErrorClass="error" path="name" cssClass="form-control" placeholder="用户名"/>
 	              </div>
 	            </div>
 	            <div class="form-group">
-	              <label for="user_remark" class="col-sm-2 control-label">备注</label>
-	              <div class="col-sm-10">
-	                <input name="remark" value="${user.remark }" type="text" class="form-control" id="user_remark" placeholder="备注">
-	              </div>
+	               <sf:label path="password" cssClass="col-sm-2 control-label" cssErrorClass="error">密码</sf:label>
+	               <div class="col-sm-5">
+	               		<sf:input cssErrorClass="error" path="password" cssClass="form-control" placeholder="密码"/>
+	               </div>
+	            </div>
+	            <c:if test="${user.id==null }">
+	     			<div class="form-group">
+	     				<sf:label path="password2" cssClass="col-sm-2 control-label" cssErrorClass="error">确认密码</sf:label>
+	               		<div class="col-sm-5">
+	               			<sf:input cssErrorClass="error" path="password2" cssClass="form-control" placeholder="确认密码"/>
+	               		</div>
+		            </div>
+     			</c:if>
+	            <div class="form-group">
+	            	<sf:label path="remark" cssClass="col-sm-2 control-label" cssErrorClass="error">备注</sf:label>
+	              	<div class="col-sm-5">
+	               		<sf:input cssErrorClass="error" path="remark" cssClass="form-control" placeholder="备注"/>
+	               	</div>
 	            </div>
 	          </div>
 	          <div class="box-footer">
 	            <button type="reset" class="btn btn-default">重置</button>
 	            <button type="submit" class="btn btn-primary">保存</button>
 	          </div>
-	    </form>
+	    </sf:form>
 	   </div>
   </div>
 </section>

@@ -1,14 +1,22 @@
 package tao.pms.model.user;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import tao.pms.model.base.BaseObject;
 
-public class User extends BaseObject{
+public class UserForm extends BaseObject{
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8059899153310860188L;
+	private static final long serialVersionUID = -2051044159538214267L;
+			
+	@NotNull
+	@Size(min=2, max=5, message="{vali.size}")
 	private String name;//操作员名称
+	
+	@NotNull
 	private String password;//密码
 	private String password2;//确认密码
 	

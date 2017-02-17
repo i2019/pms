@@ -204,6 +204,9 @@
     	select <include refid="allColumns" /> from user u
     	<where>
     		delFlag=0
+    		<if test="id != null">
+				and id = #{id}
+			</if>
     		<if test="name != null">
 				and name = #{name}
 			</if>

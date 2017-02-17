@@ -22,7 +22,7 @@ import tao.pms.model.user.UserResult;
 import tao.pms.service.user.UserService;
 
 @Controller
-public class MainController {
+public class MainController extends BaseController{
 
 	@Autowired
 	private UserService userService;

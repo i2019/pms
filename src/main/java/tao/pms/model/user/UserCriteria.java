@@ -14,6 +14,15 @@ public class UserCriteria extends BaseCriteria{
 	private List<String> nameList;
 
 	private String password;//密码
+	private String password2;//确认密码
+	
+	public String getPassword2() {
+		return password2;
+	}
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
+	}
 
 	public String getName() {
 		return name;

@@ -84,6 +84,7 @@ $('.tip_remark').tipso({
     <div class="box-header with-border">
      	<div class="pull-left"><h3 class="box-title">用户查询条件</h3></div>
 	    <div class="box-tools pull-right">
+	        <a href="edit" type="button" class="btn btn-box-tool"><i class="fa fa-user-plus"></i></a>
 	        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 	    </div>
     </div>
