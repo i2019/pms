@@ -59,21 +59,26 @@ public class UserController {
 	}
 	
 	@RequestMapping(value={"/save"})
-	public ModelAndView save(Model model,User user){
+	public String save(User user){
 		if(null!=user&&StringUtils.isEmpty(user.getId())){
 			userService.add(user);
 		}else if(null!=user&&StringUtils.hasText(user.getId())){
 			userService.update(user);
 		}
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("user.show.do");
-		mav.addObject(user);
-		return mav;
+	
+		return "redirect:/user/show";
 	}
 	
 	@RequestMapping(value={"/data"})
-	public void data(HttpServletRequest request,HttpServletResponse response){
-		
+	public void data(HttpServletRequest request,HttpServletResponse response,
+			@RequestParam(value="name",required=false)String name,
+			@RequestParam(value="id",required=false)String id){
+		if(StringUtils.hasText(name)){
+			criteria.setName(name);
+		}
+		if(StringUtils.hasText(id)){
+			criteria.setId(id);
+		}
 		userResult=userService.getByCriteria(criteria);
 		Map<String,Object> resultMap = new HashMap<String, Object>();
 		if(null!=userResult){

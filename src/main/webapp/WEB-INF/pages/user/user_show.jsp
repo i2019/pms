@@ -14,12 +14,18 @@ $(document).ready(function() {
                 {
             		"targets": [0],
 	            	"render": function(data, type, row, meta) {
-	                	return '<a href="edit?id=' + row.id + '" target="_blank">' + meta.row+1 + '</a>';
+	                	return '<a href="edit?id=' + row.id + '" target="_blank">' + (parseInt(meta.row)+1) + '</a>';
+	            	}
+            	},{
+            		"targets": [3],
+	            	"render": function(data, type, row, meta) {
+	            		return '<span class="tip_remark" data-tipso="' + row.remark + '">' + partShow(row.remark,0,9) + '</span>';
 	            	}
             	}
         ],
         "ajax":  function (data, callback, settings) {
         	var param=$("#searchForm").serialize();
+        	debugger;
         	$.ajax({
         		url: "data",
        			type: "POST",
@@ -37,12 +43,37 @@ $(document).ready(function() {
         }
     } );
     
+    $('#datatable').on('order.dt',
+    	    function() {
+    	    //排序事件
+    	    }).on('search.dt',
+    	    function() {
+    	    //搜索事件
+    	    }).on('page.dt',
+    	    function() {
+    	     //翻页事件
+   	    	$('.tip_remark').tipso({
+   	        	useTitle: false,
+   	        	background: '#3c8dbc'
+   	        });
+   }).dataTable();
+    
     $("#btn_search").click(function(){
-    	debugger;
     	table.ajax.param=$("#searchForm").serialize();
     	table.ajax.reload();
     });
+    
+    $('.tip_remark').tipso({
+    	useTitle: false,
+    	background: '#3c8dbc'
+    });
+    
 } );
+
+$('.tip_remark').tipso({
+	useTitle: false,
+	background: '#3c8dbc'
+});
 
 </script>
 
@@ -63,7 +94,7 @@ $(document).ready(function() {
 	           <div class="form-group">
 	              <label for="name" class="col-sm-2 control-label">用户名</label>
                   <div class="col-sm-10">
-                    <input name="criteria.name" type="text" class="form-control" id="name" placeholder="用户名">
+                    <input name="name" type="text" class="form-control" id="name" placeholder="用户名">
                   </div>
 	           </div>
 	         </div>
@@ -71,7 +102,7 @@ $(document).ready(function() {
 	           <div class="form-group">
 	              <label for="id" class="col-sm-2 control-label">用户id</label>
                   <div class="col-sm-10">
-                   	  <input name="criteria.id" type="text" class="form-control" id="id" placeholder="用户id">
+                   	  <input name="id" type="text" class="form-control" id="id" placeholder="用户id">
                   </div>
 	           </div>
 	         </div> 

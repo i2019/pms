@@ -20,12 +20,13 @@
 <!-- 静态资源 -->
 
 <!-- jquery -->
+<link type="text/css" rel="stylesheet" href="<c:url value="/jquery/tipso.css" />" />
 <script type="text/javascript" src="<c:url value="/jquery/jquery-2.2.3.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/jquery/tipso.js" />"></script>
 
 <!-- bootstrap --> 
 <link type="text/css" rel="stylesheet" href="<c:url value="/bootstrapcss/bootstrap.min.css" />" />
 <script type="text/javascript" src="<c:url value="/bootstrapjs/bootstrap.min.js" />"></script>
-
 
 
 <!-- adminLTE -->
@@ -46,12 +47,13 @@
 <!-- plugins -->
 <script src="<c:url value="/adminckeditor/ckeditor.js" />"></script>
 
-<link rel="stylesheet" href="<c:url value="/admindatatables/jquery.dataTables.css" />">
 <link rel="stylesheet" href="<c:url value="/admindatatables/jquery.dataTables.min.css" />">
+<link rel="stylesheet" href="<c:url value="/admindatatables/dataTables.bootstrap.css" />">
 <script src="<c:url value="/admindatatables/jquery.dataTables.js" />"></script>
 <script src="<c:url value="/admindatatables/dataTables.bootstrap.min.js" />"></script>
+<!--  
 <script src="<c:url value="/admindatatables/dataTabelSearch.js" />"></script>
-
+-->
 
 <!-- 自定义 -->
 <link type="text/css" rel="stylesheet" href="<c:url value="/css/main.css" />" />
@@ -60,6 +62,7 @@
 <script type="text/javascript" src="<c:url value="/js/i18n.js" />"></script> 
 
 <script type="text/javascript">
+
 var baseURL=$("#baseURL").val();
 
 $(function () { $(".popover-hide").popover();});
@@ -69,13 +72,20 @@ $(function () { $(".popover-hide").popover();});
  * @param dateStr
  */
 function strIsNull(str){
-	if(str!=null
-			&&str.replace(/(^\s*)|(\s*$)/g,'').length>0){
+	if(str!=null&&str.replace(/(^\s*)|(\s*$)/g,'').length>0){
 		return false;
 	}
 	return true;
 }
 
+function partShow(str,start,stop){
+	if(strIsNull(str)||str.length<stop){
+		return str;
+	}else{
+		return str.substring(start,stop)+' ...';
+	}
+	
+}
 </script>
 
 
