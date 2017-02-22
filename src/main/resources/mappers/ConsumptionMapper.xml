@@ -2,6 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="tao.pms.dao.account.ConsumptionDao">
 	
+	<!-- 列举所有字段 -->
+	<sql id="allColumns">
+		owner,cause,time,amount
+		id,
+		createTime,modifyTime,
+  		createdBy,updatedBy,
+  		remark,delFlag
+	</sql>
+	
+	<!-- 分页  -->
+	<sql id="limitPage">
+   		 <if test="skipResults!=null">
+			limit #{skipResults},#{maxResults}
+   		 </if>
+	</sql>
+	
+	<!-- 统计查询结果数 -->
+	<sql id="selectCount">
+		select count(*) from
+	</sql>
+	
+	<!-- 根据创建时间降序排序 -->
+	<sql id="createTimeDesc">
+		order by createTime desc
+	</sql>
+	
 	<insert id="add" parameterType="consumption">
 		insert into consumption
 		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -75,6 +101,91 @@
 			</if>
 		</trim>
 	</insert>
+	
+	
+	<delete id="remove" parameterType="string">
+		delete from consumption
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+	
+	
+	
+	<select id="getByCriteriaCount" resultType="int" parameterType="userCriteria">
+    	<include refid="selectCount" /> consumption consum
+    	<where>
+    		delFlag=0
+
+			<if test="modifyTime != null">
+				and modifyTime=#{modifyTime}
+			</if>
+			
+			<if test="createTime != null">
+				and createTime=#{createTime}
+			</if>
+			<if test="createTimeBegin != null">
+				<![CDATA[
+				and createTime>=#{createTimeBegin}
+				]]>     
+			</if>
+			<if test="createTimeEnd != null">
+				<![CDATA[
+				and createTime<=#{createTimeEnd}
+				]]>     
+			</if>
+			
+			<if test="createdBy != null">
+				and createdBy=#{createdBy}
+			</if>
+			
+			<if test="updatedBy != null">
+				and updatedBy=#{updatedBy}
+			</if>
+			
+			<if test="remark != null">
+				 and remark like CONCAT('%','${remark}','%' ) 
+			</if>
+			
+    	</where>
+    </select>
+    <select id="getByCriteria" resultType="user" parameterType="userCriteria">
+    	select <include refid="allColumns" /> from  consumption consum
+    	<where>
+    		delFlag=0
+
+			<if test="modifyTime != null">
+				and modifyTime=#{modifyTime}
+			</if>
+			
+			<if test="createTime != null">
+				and createTime=#{createTime}
+			</if>
+			<if test="createTimeBegin != null">
+				<![CDATA[
+				and createTime>=#{createTimeBegin}
+				]]>     
+			</if>
+			<if test="createTimeEnd != null">
+				<![CDATA[
+				and createTime<=#{createTimeEnd}
+				]]>     
+			</if>
+			
+			<if test="createdBy != null">
+				and createdBy=#{createdBy}
+			</if>
+			
+			<if test="updatedBy != null">
+				and updatedBy=#{updatedBy}
+			</if>
+			
+			<if test="remark != null">
+				 and remark like CONCAT('%','${remark}','%' ) 
+			</if>
+			
+    	</where>
+    	<include refid="limitPage" />
+    </select>
+    
 	
 </mapper>
 <!-- 

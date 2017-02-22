@@ -14,7 +14,7 @@
 		<header class="main-header"> <!-- Logo --> <a href="/"
 			class="logo"> <!-- mini logo for sidebar mini 50x50 pixels --> <span
 			class="logo-mini"><b>P</b>MS</span> <!-- logo for regular state and mobile devices -->
-			<span class="logo-lg"><b>P</b>MS</span>
+			<span class="logo-lg"><b><i class="fa   fa-users"></i></b><b>  P</b><b> M</b><b> S</b></span>
 		</a> <!-- Header Navbar--> <nav class="navbar navbar-static-top"> <!-- Sidebar toggle button-->
 		<a href="#" class="sidebar-toggle" data-toggle="offcanvas"
 			role="button"> <span class="sr-only">Toggle navigation</span>
@@ -86,6 +86,23 @@
 			            </li>
 			          </ul>
        		 </li>
+       		 
+       		  <li class="treeview">
+			          <a href="#">
+				            <i class="fa   fa-money"></i> <span>财务</span>
+				            <span class="pull-right-container">
+				              	<i class="fa fa-angle-left pull-right"></i>
+				            </span>
+			          </a>
+			          <ul class="treeview-menu">
+			            <li>
+			            	<a href="<c:url value="/money/consumptions"/>">
+			            		<i class="fa  fa-outdent"></i>消费记录
+			            	</a>
+			            </li>
+			          </ul>
+       		 </li>
+       		 
 	      </ul>
 	      
 	 	</section>

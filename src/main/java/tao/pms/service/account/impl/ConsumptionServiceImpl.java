@@ -37,20 +37,21 @@ public class ConsumptionServiceImpl extends BaseManagerImpl implements Consumpti
 
 	@Override
 	public Integer update(Consumption record) {
-		// TODO Auto-generated method stub
-		return null;
+		if(!StringUtils.isEmpty(record)&&StringUtils.hasText(record.getId())){
+			record=(Consumption) setModifyDefault(record);
+			return consumptionDao.update(record);
+		}
+		return ReturnConstant.EMPTY;
 	}
 
 	@Override
 	public Integer remove(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return consumptionDao.remove(id);
 	}
 
 	@Override
 	public Consumption getById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return consumptionDao.getById(id);
 	}
 
 	@Override
@@ -61,8 +62,10 @@ public class ConsumptionServiceImpl extends BaseManagerImpl implements Consumpti
 
 	@Override
 	public ConsumptionResult getByCriteria(ConsumptionCriteria criteria) {
-		// TODO Auto-generated method stub
-		return null;
+		ConsumptionResult result=new ConsumptionResult();
+		result.setResultList(consumptionDao.getByCriteria(criteria));
+		result.setTotalCount(consumptionDao.getByCriteriaCount(criteria));
+		return result;
 	}
 
 	@Override
