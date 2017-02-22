@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <script>
+
+//$(document).ready
 $(document).ready(function() {
+		
+	var editedUser=getHrefParam('editedUser');
+
     var table=$('#datatable').DataTable( {
         "processing": true,
         "columns": [
@@ -10,13 +15,23 @@ $(document).ready(function() {
             { "data": "createTime" },
             { "data": "remark" }
         ],
-        "columnDefs": [
+        "columnDefs": [ 
                 {
             		"targets": [0],
 	            	"render": function(data, type, row, meta) {
 	                	return '<a href="edit?id=' + row.id + '" target="_blank">' + (parseInt(meta.row)+1) + '</a>';
 	            	}
             	},{
+            		"targets": [1],
+	            	"render": function(data, type, row, meta) {
+	            		var astr= '<a href="edit?id=' + row.id + '" target="_blank">' + row.name + '</a>';
+	            		if(editedUser!=null&&row.name==editedUser){
+	            			astr= '<a id="editedUser" href="edit?id=' + row.id + '" target="_blank" class="alert-success">' + row.name + '</a>';
+	            		}
+	                	return astr;
+	            	}
+            	}
+                ,{
             		"targets": [3],
 	            	"render": function(data, type, row, meta) {
 	            		return '<span class="tip_remark" data-tipso="' + row.remark + '">' + partShow(row.remark,0,9) + '</span>';
@@ -41,6 +56,7 @@ $(document).ready(function() {
 				}
         	});
         }
+    	
     } );
     
     $('#datatable').on('order.dt',
@@ -68,7 +84,10 @@ $(document).ready(function() {
     	background: '#3c8dbc'
     });
     
+    $("#editedUser").parent().parent().addClass('alert-success'); 
+    
 } );
+//. $(document).ready
 
 $('.tip_remark').tipso({
 	useTitle: false,

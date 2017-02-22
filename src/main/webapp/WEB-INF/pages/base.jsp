@@ -71,6 +71,16 @@ var baseURL=$("#baseURL").val();
 
 $(function () { $(".popover-hide").popover();});
 
+
+function getHrefParam(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)
+    	 return  unescape(r[2]); 
+     return null;
+}
+
 /**
  * 字符串是否为空
  * @param dateStr

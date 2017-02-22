@@ -17,6 +17,7 @@ public class UserForm extends BaseObject{
 	private String name;//操作员名称
 	
 	@NotNull
+	@Size(min=2, max=10, message="{vali.size}")
 	private String password;//密码
 	private String password2;//确认密码
 	
